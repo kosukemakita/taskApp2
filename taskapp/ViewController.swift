@@ -10,11 +10,13 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-let realm = try! Realm()
-
-var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let realm = try! Realm()
+    
+    var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskArray.count
     }
