@@ -18,6 +18,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OV1-tt-I8v">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <searchBar key="tableFooterView" contentMode="redraw" id="Bcl-vY-fAg">
+                                    <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="7cD-to-wDk">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -47,6 +52,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="Bcl-vY-fAg" id="9FK-lU-rkm"/>
                         <outlet property="tableView" destination="OV1-tt-I8v" id="LOs-5r-5eX"/>
                         <segue destination="5jP-y8-5dc" kind="show" identifier="cellSegue" id="LtK-Z6-kFm"/>
                     </connections>
@@ -91,30 +97,50 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gbl-s4-Wyd">
-                                <rect key="frame" x="0.0" y="399" width="414" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHQ-bh-tWH">
+                                <rect key="frame" x="10" y="334" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXz-tr-lIb">
+                                <rect key="frame" x="10" y="365" width="414" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gbl-s4-Wyd">
+                                <rect key="frame" x="0.0" y="409" width="414" height="216"/>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="YMm-8U-BOd" firstAttribute="trailing" secondItem="lYw-ke-Wpa" secondAttribute="trailing" constant="10" id="2Mb-Fi-zy7"/>
+                            <constraint firstItem="eXz-tr-lIb" firstAttribute="top" secondItem="KHQ-bh-tWH" secondAttribute="bottom" constant="10" id="Bl1-cp-V6D"/>
+                            <constraint firstItem="eXz-tr-lIb" firstAttribute="trailing" secondItem="YMm-8U-BOd" secondAttribute="trailing" constant="10" id="Fmx-ym-Ncf"/>
                             <constraint firstItem="NOm-Px-n4m" firstAttribute="top" secondItem="YMm-8U-BOd" secondAttribute="top" constant="10" id="Ghb-gw-EaK"/>
                             <constraint firstItem="YMm-8U-BOd" firstAttribute="trailing" secondItem="NOm-Px-n4m" secondAttribute="trailing" constant="10" id="HEb-qT-RVn"/>
                             <constraint firstItem="lYw-ke-Wpa" firstAttribute="leading" secondItem="YMm-8U-BOd" secondAttribute="leading" constant="10" id="IYZ-op-090"/>
+                            <constraint firstItem="KHQ-bh-tWH" firstAttribute="leading" secondItem="YMm-8U-BOd" secondAttribute="leading" constant="10" id="LqC-al-ZFi"/>
                             <constraint firstItem="YMm-8U-BOd" firstAttribute="trailing" secondItem="wfk-5t-fM8" secondAttribute="trailing" constant="10" id="N5q-Ha-WP5"/>
+                            <constraint firstItem="Gbl-s4-Wyd" firstAttribute="leading" secondItem="YMm-8U-BOd" secondAttribute="leading" id="NoE-bW-wOh"/>
                             <constraint firstItem="eSi-eX-QqJ" firstAttribute="top" secondItem="NOm-Px-n4m" secondAttribute="bottom" constant="10" id="O2v-5O-ulv"/>
+                            <constraint firstItem="KHQ-bh-tWH" firstAttribute="top" secondItem="lYw-ke-Wpa" secondAttribute="bottom" constant="10" id="P3V-5Q-Unv"/>
+                            <constraint firstItem="YMm-8U-BOd" firstAttribute="trailing" secondItem="KHQ-bh-tWH" secondAttribute="trailing" constant="10" id="YLW-bq-kxf"/>
                             <constraint firstItem="wfk-5t-fM8" firstAttribute="leading" secondItem="YMm-8U-BOd" secondAttribute="leading" constant="10" id="aaY-2o-L2N"/>
                             <constraint firstItem="YMm-8U-BOd" firstAttribute="trailing" secondItem="eSi-eX-QqJ" secondAttribute="trailing" constant="10" id="cjw-Aq-Fos"/>
+                            <constraint firstItem="Gbl-s4-Wyd" firstAttribute="top" secondItem="eXz-tr-lIb" secondAttribute="bottom" constant="10" id="fpi-Vs-6zk"/>
                             <constraint firstItem="wfk-5t-fM8" firstAttribute="top" secondItem="eSi-eX-QqJ" secondAttribute="bottom" constant="10" id="hC4-15-mrW"/>
                             <constraint firstItem="eSi-eX-QqJ" firstAttribute="leading" secondItem="YMm-8U-BOd" secondAttribute="leading" constant="10" id="lE1-oM-fAv"/>
                             <constraint firstItem="lYw-ke-Wpa" firstAttribute="top" secondItem="wfk-5t-fM8" secondAttribute="bottom" constant="10" id="mKr-JJ-UT9"/>
+                            <constraint firstItem="Gbl-s4-Wyd" firstAttribute="trailing" secondItem="YMm-8U-BOd" secondAttribute="trailing" id="ozS-E7-QiY"/>
+                            <constraint firstItem="eXz-tr-lIb" firstAttribute="leading" secondItem="YMm-8U-BOd" secondAttribute="leading" constant="10" id="xQq-8g-iM7"/>
                             <constraint firstItem="NOm-Px-n4m" firstAttribute="leading" secondItem="YMm-8U-BOd" secondAttribute="leading" constant="10" id="ygH-sb-mD0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMm-8U-BOd"/>
                     </view>
                     <navigationItem key="navigationItem" id="oRH-fU-Tu7"/>
                     <connections>
+                        <outlet property="categoryTextField" destination="eXz-tr-lIb" id="by6-ej-rQ2"/>
                         <outlet property="contentsTextView" destination="lYw-ke-Wpa" id="1Ge-b0-VCT"/>
                         <outlet property="datePicker" destination="Gbl-s4-Wyd" id="X5j-YH-V4e"/>
                         <outlet property="titleTextField" destination="eSi-eX-QqJ" id="0h1-IW-mMT"/>
