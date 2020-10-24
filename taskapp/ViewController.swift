@@ -83,7 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         //デリゲート先を自分に設定する。
-//        searchBar.delegate = self
+        searchBar.delegate = self
         
         //何も入力されていなくてもReturnキーを押せるようにする。
 //        searchBar.enablesReturnKeyAutomatically = false
@@ -116,12 +116,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //検索バーのメソッド
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let realm = try! Realm()
+
         if searchText.isEmpty {
             taskArray = realm.objects(Task.self)
         } else {
             taskArray = realm
                 .objects(Task.self)
-                .filter("name CONTAINS %@", "カテゴリー：\(searchText)")
+                .filter("category CONTAINS %@", searchText)
+                
         }
 
         tableView.reloadData()
